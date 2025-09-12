@@ -81,6 +81,12 @@ Bash
 # Copy the configuration file
 cp laravel/.env.example laravel/.env
 
+# Configuration
+
+Copy .env.example to .env inside both /laravel and /nuxt.
+Update environment variables as needed (database, API URLs).
+Database credentials are defined in docker-compose.yml.
+
 # Generate the application key and migrate tables
 docker-compose exec laravel-app php artisan key:generate
 docker-compose exec laravel-app php artisan migrate
