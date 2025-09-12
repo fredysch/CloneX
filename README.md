@@ -63,28 +63,63 @@ CloneX/
 
 ## ⚡ Installation
 
-Clone the repository:
+1. Clone the Repository and Start Services
 
-```bash
+Clone the repository and navigate to the project folder. The --build command ensures the environment is built from scratch, including PHP extensions.
+
+Bash
+
 git clone https://github.com/your-username/clone-x.git
 cd clone-x
+docker-compose up -d --build
 
-## ⚡ Start services with Docker Compose:
+2. Configure the Backend (Laravel)
+Access the Laravel container to configure the application, generate the security key, and migrate the database tables.
 
-docker-compose up -d
+Bash
 
+# Copy the configuration file
+cp laravel/.env.example laravel/.env
 
-Backend will be available at: http://localhost:8000
-Frontend will be available at: http://localhost:3000
+# Generate the application key and migrate tables
+docker-compose exec laravel-app php artisan key:generate
+docker-compose exec laravel-app php artisan migrate
 
-⚙️ Configuration
+3. Configure and Start the Frontend (Nuxt)
+Access the Nuxt container to install dependencies and start the development server.
 
-Copy .env.example to .env inside both /laravel and /nuxt.
+Bash
 
-Update environment variables as needed (database, API URLs).
+# Copy the configuration file
+cp nuxt/.env.example nuxt/.env
 
-Database credentials are defined in docker-compose.yml.
+# Install NPM dependencies
+docker-compose exec node-app npm install
+
+# Start the Nuxt development server
+docker-compose exec node-app npm run dev --host
+
+4. Start the Backend Server
+Start the Laravel development server so the API is available.
+
+Bash
+
+docker-compose exec laravel-app php artisan serve --host=0.0.0.0
+
+💻 Access the Project
+
+After executing the commands above, you can access the application at the following addresses:
+
+Frontend: http://localhost:3000
+
+Backend (API): http://localhost:8000
 
 📜 License
-
 This project is licensed under the MIT License.
+
+
+
+
+
+
+
