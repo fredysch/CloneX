@@ -17,7 +17,6 @@ CloneX/
 ├── laravel/ # Backend (Laravel 12 API)
 ├── nuxt/ # Frontend (Nuxt 4 + TailwindCSS)
 └── docker/ # Docker setup (MySQL, Redis, PHP, Node)
-```bash
 
 ---
 
