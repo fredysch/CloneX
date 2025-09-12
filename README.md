@@ -10,6 +10,7 @@ A **full-stack X clone** built with **Laravel 12**, **Nuxt 4**, **TailwindCSS 4*
 
 ---
 
+```bash
 ## 📂 Project Structure
 
 CloneX/
